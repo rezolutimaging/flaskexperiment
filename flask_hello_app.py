@@ -5,7 +5,7 @@ import psycopg2
 app = Flask(__name__) 
 
 #set configuration variable to connect to database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres@localhost:5432/example'  
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://udacitystudios:udacityrocks!@localhost:5432/example'  
 
 #initialize sqlalchemy database 
 db = SQLAlchemy(app)
@@ -21,4 +21,6 @@ db.create_all()
 
 @app.route('/')
 def index():
-    return 'hello world'
+	person = Person.query.first()
+	return 'Hello ' + person.name
+
