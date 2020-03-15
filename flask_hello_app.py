@@ -12,8 +12,13 @@ db = SQLAlchemy(app)
 
 #create a person model 
 class Person(db.Model): 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(), nullable=False)
+	id = db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.String(), nullable=False)
+	
+	#define a __repr__ method to print additional information in debug mode
+	def __repr__(self):
+		return f'<Person ID: {self.id}, name: {self.name}>' 
+		
 
 #create database tables 
 db.create_all()
